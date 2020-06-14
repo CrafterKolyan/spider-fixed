@@ -163,7 +163,7 @@ def eval_and_or(pred, label):
     return len(pred_ao), len(label_ao), 0
 
 
-def get_nestedSQL(sql):
+def get_nested_sql(sql):
     nested = []
     for cond_unit in sql['from']['conds'][::2] + sql['where'][::2] + sql['having'][::2]:
         if type(cond_unit[3]) is dict:
@@ -282,7 +282,7 @@ def count_component1(sql):
 
 
 def count_component2(sql):
-    nested = get_nestedSQL(sql)
+    nested = get_nested_sql(sql)
     return len(nested)
 
 
