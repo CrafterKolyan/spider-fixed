@@ -27,31 +27,12 @@ import os
 import sqlite3
 
 from process_sql import get_schema, Schema, get_sql
+from process_sql import WHERE_OPS, UNIT_OPS, AGG_OPS, TABLE_TYPE
 
 # Flag to disable value evaluation
 DISABLE_VALUE = True
 # Flag to disable distinct in select evaluation
 DISABLE_DISTINCT = True
-
-CLAUSE_KEYWORDS = ('select', 'from', 'where', 'group', 'order', 'limit', 'intersect', 'union', 'except')
-JOIN_KEYWORDS = ('join', 'on', 'as')
-
-WHERE_OPS = ('not', 'between', '=', '>', '<', '>=', '<=', '!=', 'in', 'like', 'is', 'exists')
-UNIT_OPS = ('none', '-', '+', "*", '/')
-AGG_OPS = ('none', 'max', 'min', 'count', 'sum', 'avg')
-TABLE_TYPE = {
-    'sql': "sql",
-    'table_unit': "table_unit",
-}
-
-COND_OPS = ('and', 'or')
-SQL_OPS = ('intersect', 'union', 'except')
-ORDER_OPS = ('desc', 'asc')
-
-HARDNESS = {
-    "component1": ('where', 'group', 'order', 'limit', 'join', 'or', 'like'),
-    "component2": ('except', 'union', 'intersect')
-}
 
 
 def condition_has_or(conds):
