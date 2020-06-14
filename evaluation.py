@@ -551,26 +551,30 @@ def evaluate(gold, predict, db_dir, etype, kmaps):
             })
 
     for level in levels:
-        if scores[level]['count'] == 0:
-            continue
         if etype in ["all", "exec"]:
-            scores[level]['exec'] /= scores[level]['count']
+            if scores[level]['count'] == 0:
+                scores[level]['exec'] = 1.0
+            else:
+                scores[level]['exec'] /= scores[level]['count']
 
         if etype in ["all", "match"]:
-            scores[level]['exact'] /= scores[level]['count']
+            if scores[level]['count'] == 0:
+                scores[level]['exact'] = 1.0
+            else:
+                scores[level]['exact'] /= scores[level]['count']
             for type_ in partial_types:
                 if scores[level]['partial'][type_]['acc_count'] == 0:
-                    scores[level]['partial'][type_]['acc'] = 0
+                    scores[level]['partial'][type_]['acc'] = 1.0
                 else:
                     scores[level]['partial'][type_]['acc'] = scores[level]['partial'][type_]['acc'] / \
                                                              scores[level]['partial'][type_]['acc_count'] * 1.0
                 if scores[level]['partial'][type_]['rec_count'] == 0:
-                    scores[level]['partial'][type_]['rec'] = 0
+                    scores[level]['partial'][type_]['rec'] = 1.0
                 else:
                     scores[level]['partial'][type_]['rec'] = scores[level]['partial'][type_]['rec'] / \
                                                              scores[level]['partial'][type_]['rec_count'] * 1.0
                 if scores[level]['partial'][type_]['acc'] == 0 and scores[level]['partial'][type_]['rec'] == 0:
-                    scores[level]['partial'][type_]['f1'] = 1
+                    scores[level]['partial'][type_]['f1'] = 1.0
                 else:
                     scores[level]['partial'][type_]['f1'] = \
                         2.0 * scores[level]['partial'][type_]['acc'] * scores[level]['partial'][type_]['rec'] / (
