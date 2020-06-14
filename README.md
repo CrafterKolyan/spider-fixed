@@ -5,8 +5,8 @@ Spider is a large human-labeled dataset for complex and cross-domain semantic pa
 ## Fixed Spider Dataset Download links
 
 [Fixed Spider dataset link](https://drive.google.com/file/d/1m68AHHPC4pqyjT-Zmt-u8TRqdw5vp-U5/view?usp=sharing)  
-[Fixed evaluation.py link](evaluation.py)
-[Fixed process_sql.py link](process_sql.py)
+[Fixed evaluation.py link](evaluation.py)  
+[Fixed process_sql.py link](process_sql.py)  
 
 ### Changelog (this repository)
 - `06/14/2020` Change logic of `evaluation.py` when no objects are in category (now shows 1.0 accuracy and F1 instead of 0.0)
