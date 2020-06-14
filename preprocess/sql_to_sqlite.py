@@ -8,7 +8,7 @@ import os
 def change_extension(filename, new_extension):
     last_dot_index = filename.rfind('.')
     if last_dot_index == -1:
-        raise ValueError("Please provide output file name using -o or --output argument")
+        raise ValueError("Please provide output file name using `-o` or `--output` argument")
     filename = filename[:filename.rfind('.')] + new_extension
     return filename
 
