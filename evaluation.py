@@ -20,13 +20,13 @@
 ################################
 
 from __future__ import print_function
-import os, sys
-import json
-import sqlite3
-import traceback
-import argparse
 
-from process_sql import tokenize, get_schema, get_tables_with_alias, Schema, get_sql
+import argparse
+import json
+import os
+import sqlite3
+
+from process_sql import get_schema, Schema, get_sql
 
 # Flag to disable value evaluation
 DISABLE_VALUE = True
