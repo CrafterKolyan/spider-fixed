@@ -19,8 +19,6 @@
 # }
 ################################
 
-from __future__ import print_function
-
 import argparse
 import json
 import os
@@ -35,16 +33,16 @@ DISABLE_VALUE = True
 DISABLE_DISTINCT = True
 
 
-def condition_has_or(conds):
-    return 'or' in conds[1::2]
+def condition_has_or(conditions):
+    return 'or' in conditions[1::2]
 
 
-def condition_has_like(conds):
-    return WHERE_OPS.index('like') in [cond_unit[1] for cond_unit in conds[::2]]
+def condition_has_like(conditions):
+    return WHERE_OPS.index('like') in [cond_unit[1] for cond_unit in conditions[::2]]
 
 
-def condition_has_sql(conds):
-    for cond_unit in conds[::2]:
+def condition_has_sql(conditions):
+    for cond_unit in conditions[::2]:
         val1, val2 = cond_unit[3], cond_unit[4]
         if val1 is not None and type(val1) is dict:
             return True
@@ -59,12 +57,6 @@ def val_has_op(val_unit):
 
 def has_agg(unit):
     return unit[0] != AGG_OPS.index('none')
-
-
-def F1(acc, rec):
-    if (acc + rec) == 0:
-        return 0
-    return (2. * acc * rec) / (acc + rec)
 
 
 def get_scores(count, pred_total, label_total):
