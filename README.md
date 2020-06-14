@@ -2,6 +2,9 @@
 
 Spider is a large human-labeled dataset for complex and cross-domain semantic parsing and text-to-SQL task (natural language interfaces for relational databases). It is released along with our EMNLP 2018 paper: [Spider: A Large-Scale Human-Labeled Dataset for Complex and Cross-Domain Semantic Parsing and Text-to-SQL Task](https://arxiv.org/abs/1809.08887). This repo contains all code for evaluation, preprocessing, and all baselines used in our paper. Please refer to [the task site](https://yale-lily.github.io/spider) for more general introduction and the leaderboard.
 
+[Fixed Spider dataset link](https://drive.google.com/file/d/1m68AHHPC4pqyjT-Zmt-u8TRqdw5vp-U5/view?usp=sharing)
+[Fixed evaluation.py link](evaluation.py)
+
 ### Changelog (this repository)
 - `06/14/2020` Change logic of `evaluation.py` when no objects are in category (now shows 1.0 accuracy and F1 instead of 0.0)
 - `06/14/2020` Fix `wta_1.sql` and `wta_1.sqlite`.
